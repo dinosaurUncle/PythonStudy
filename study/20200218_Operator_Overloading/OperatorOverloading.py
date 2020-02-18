@@ -1,3 +1,5 @@
+## 연산자 중복
+
 class OperatorOverloading:
     def __init__(self, width, height, name):
         self.__width = width
@@ -35,4 +37,40 @@ oo = oo * 4
 oo.toString()
 print(len(oo))
 print(oo.getitem(0))
+
+'''
+연산자 중복과 정렬을 같이 쓰는 예
+'''
+
+
+
+class OperatorOverloadingExtend:
+    def __init__(self, word):
+        self.__word = word
+
+    def __len__(self):
+        return len(self.__word)
+
+    def __getitem__(self, index):
+        return self.__word[index]
+
+    def get_word(self):
+        return self.__word
+
+Hi = OperatorOverloadingExtend('Hi')
+Hello = OperatorOverloadingExtend('Hello')
+Bye = OperatorOverloadingExtend('Bye')
+
+Keywords = [Hi, Hello, Bye]
+
+Keywords = sorted(Keywords, key=lambda  x: len(x))
+
+for keyword in Keywords:
+    print(keyword.get_word())
+
+Keywords = sorted(Keywords, key=lambda  x: x[1])
+
+for keyword in Keywords:
+    print(keyword.get_word())
+
 

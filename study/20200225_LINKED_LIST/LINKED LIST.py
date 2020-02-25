@@ -78,10 +78,33 @@ class NodeMgmt:
             node = node.next
         print(node.data)
 
+    def delete(self, data):
+        if self.head =='':
+            print("해당 값을 가진 노드가 없습니다")
+            return
+        if self.head.data == data:
+            temp = self.head
+            self.head = self.head.next
+            del temp
+            return
+        else :
+            node = self.head
+            while node.next:
+                if node.next.data == data:
+                    temp = node.next
+                    node.next = node.next.next
+                    del temp
+                    return
+                else:
+                    node = node.next
+
+
+
 nodeMgmt = NodeMgmt(0)
 
 for i in range (1,10):
     nodeMgmt.add(i)
 
+nodeMgmt.delete(7)
 nodeMgmt.desc()
 
